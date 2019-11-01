@@ -1,0 +1,259 @@
+$color_pink: #FFEDF7
+$color_blue: #003164
+$color_red: #FF4384
+$color_white: #FFFFFF
+$color_lightBlue: #E5F3FF
+$color_skyblue: #00A7FF
+
+@mixin size($w,$h:$w)
+  width: $w
+  height: $h
+
+@mixin flexcenter
+  display: flex
+  justify-content: center
+  align-items: center
+@mixin abcenter
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+@mixin title
+  width: 413px
+  height: 28px
+  font-size: 24px
+  padding: 8px 16px
+  display: flex
+  align-items: center
+  background-color: #3f64a1
+  color: $color_white
+  
+@mixin breakpoint($point)
+  @if $point == pc1240
+    @media  screen and (max-width: 1240px)
+      @content 
+  @if $point == pc1024
+    @media  screen and (max-width: 1024px)
+      @content 
+  @else if $point == pad980
+    @media  screen and (max-width: 980px)  
+      @content
+  @else if $point == pad767
+    @media screen and (max-width: 767px)
+      @content
+  @else if $point == pad600
+    @media screen and (max-width: 600px)
+      @content
+  @else if $point == mobile480
+    @media  screen and (max-width: 480px)
+      @content
+  @else if $point == mobile414
+    @media  screen and (max-width: 414px)
+      @content
+  @else if $point == mobile375
+    @media  screen and (max-width: 375px)
+      @content
+  @else if $point == mobile360
+    @media  screen and (max-width: 360px)
+      @content
+  @else if $point == mobile320 
+    @media  screen and (max-width: 320px)
+      @content
+*
+  font-family: 'Roboto', sans-serif,微軟正黑體
+  font-weight: bold
+  text-transform: uppercase
+  // border: 1px solid #000
+  box-sizing: border-box
+[v-cloak]
+  display: none
+      
+html,body
+  margin: 0
+  padding: 0
+  width: 100%
+  height: 100%
+  background-color: #555
+  +flexcenter
+  
+.mylist_container#app
+  max-width: 800px
+  background-color: $color_white
+  box-shadow: 1px 2px 5px 0px rgba(#eee,0.5)
+  position: relative
+  border-radius: 5px
+  .title 
+    +size(100%,80px)
+    +flexcenter
+    font-size: 30px
+    background-color: $color_red
+    color: $color_white
+    letter-spacing: 2px
+    border-radius: 5px 5px 0px 0px
+  .menu
+    +size(100%)
+    +flexcenter
+    flex-wrap: wrap
+    padding: 20px 10px
+    .name
+      flex: 3
+      +flexcenter
+      span
+        margin-right: 5px
+      input
+        +size(80%,25px)
+        padding-left: 5px
+    .num,.price
+      flex: 3
+      +flexcenter
+      span
+        margin-right: 5px
+      input
+        +size(60%,25px)
+        padding-left: 5px
+    .addbtn
+      flex: 1
+      +flexcenter
+      button
+        +size(50px,30px)
+        border: none
+        background-color: $color_red
+        color: #fff
+        letter-spacing: 1px
+        cursor: pointer
+  .list_body
+    +size(100%)
+    padding: 10px
+    .top
+      display: flex
+      +size(60%,50px)
+      +breakpoint(mobile414)
+        width: 80%
+      div
+        +size(33.33%,100%)
+        +flexcenter
+        background-color: #eee
+        cursor: pointer
+        span
+          +size(28px)
+          background-color: #fff
+          border-radius: 100%
+          margin-left: 5px
+          color: #555
+          +flexcenter
+        &:hover
+          border: 1px solid #999
+      .red
+        background-color: $color_red
+        color: #fff
+        span
+          color: #555
+    .bottom
+      .nav
+        +size(100%,40px)
+        display: flex
+        background-color: $color_blue
+        color: $color_white
+        +flexcenter
+        letter-spacing: 1px
+        .name
+          flex: 5
+          margin: 10px  
+        .price,.num
+          flex: 2
+          span
+            margin-left: 5px
+          .reverse
+            transform: rotate(180deg)
+        .fas.fa-trash-alt
+          flex: 1
+      .text
+        +size(100%)
+        ul
+          margin: 0
+          padding: 0
+          li
+            +size(100%)
+            display: flex
+            +flexcenter
+            letter-spacing: 1px
+            border-bottom: 1px solid #eee
+            label
+              +size(100%)
+              +flexcenter
+              .checkbox
+                display: none
+              .name
+                flex: 5
+                margin: 10px  
+              .price,.num
+                flex: 2
+                input
+                  width: 80%
+              .fas.fa-trash-alt
+                flex: 1
+                cursor: pointer
+            .completed
+              background-color: #eee
+              text-decoration: line-through
+      .total
+        +size(100%)
+        display: flex
+        background-color: $color_blue
+        color: $color_white
+        +flexcenter
+        .name
+          flex: 5
+          margin: 10px  
+        .num,.price
+          flex: 2
+        .clear
+          flex: 1
+      .announcement
+        +size(100%)
+        margin: 50px 0px
+        text-align: center
+        font-size: 30px
+        display: none
+      .deleteAll
+        +size(100%)
+        text-align: right
+        margin-top: 10px
+        color: $color_blue
+        cursor: pointer
+  .checkDelet
+    +size(300px,200px)
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    background-color: $color_pink
+    z-index: 10
+    box-shadow: 0px 0px 2px 0px rgba(#000,0.5)
+    display: none
+    
+    .delete_text
+      +size(100%,40px)
+      +flexcenter
+      margin-top: 20%
+      span
+        font-size: 20px
+        color: #555
+        letter-spacing: 1px
+        text-align: center
+    .deletebtn
+      +size(100%)
+      display: flex
+      justify-content: center
+      button
+        +size(40%,40px)
+        border: none
+        margin: 10px
+        background-color: $color_red
+        color: $color_white
+        font-size: 18px
+        letter-spacing: 1px
+      .no
+        background-color: $color_blue
+        
+      

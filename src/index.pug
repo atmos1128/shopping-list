@@ -1,0 +1,66 @@
+.mylist_container#app
+  .title shopping list
+  .menu
+    .name
+      span 名稱
+      input(type="text" v-model="todoName")
+    .num
+      span 數量
+      input(type="text" v-model="todoNum")
+    .price
+      span 價錢
+      input(type="text" v-model="todoPrice")
+    .addbtn
+      button(@click="add") 新增
+  .list_body
+    .top
+      div(:class="{'red':visibility =='all'}" @click="visibility = 'all'") 全部
+        span {{lists.length}}
+      div(:class="{'red':visibility =='active'}" @click="visibility = 'active'") 進行中
+        span {{activenum}}
+      div(:class="{'red':visibility =='completed'}" @click="visibility = 'completed'") 完成
+        span {{completednum}}
+    
+    .bottom
+      .nav
+        .name 名稱
+        .num(@click="istype ='num' ;isReverse=!isReverse") 數量
+          span(v-if="istype =='num'")
+            .fas.fa-sort-up(:class="{'reverse':isReverse}")
+        .price(@click="istype ='price' ;isReverse=!isReverse") 價錢
+          span(v-if="istype =='price'")
+            .fas.fa-sort-up(:class="{'reverse':isReverse}")
+        .fas.fa-trash-alt
+      .text
+        ul
+          li(v-for="(item,id) in filterList")
+            label(:for="item.id" :class="{'completed':item.completed}")
+              input.checkbox(type="checkbox" :id="item.id" v-model="item.completed")
+              .name(@dblclick="edit(item)")
+                span(v-if="item.id != cacheTodo.id") {{item.name}}
+                input(type="text" v-model="cacheName" @keyup.enter="canceEnter(item)" @keyup.esc="cancelEdit" 
+                      v-if="item.id == cacheTodo.id")
+              .num(@dblclick="edit(item)")
+                span(v-if="item.id != cacheTodo.id")  {{item.num}}
+                input(type="text" v-model="cacheNum" @keyup.enter="canceEnter(item)" @keyup.esc="cancelEdit" 
+                      v-if="item.id == cacheTodo.id")
+              .price(@dblclick="edit(item)")
+                span(v-if="item.id != cacheTodo.id")  {{item.price}}
+                input(type="text" v-model="cachePrice" @keyup.enter="canceEnter(item)" @keyup.esc="cancelEdit" 
+                      v-if="item.id == cacheTodo.id")
+              .fas.fa-trash-alt(@click="remove(item)")
+      .announcement
+        div 快快來新增清單吧*v*
+      .total
+        .name 總共
+        .num {{numadd}}個
+        .price {{priceadd}}元
+        .clear
+      .deleteAll(@click="$('.checkDelet').show()") 清除所有清單
+  .checkDelet
+    .delete_text
+      span 確認清除所有清單嗎?
+    .deletebtn
+      button.yes(@click="deleteAll") 確認
+      button.no(@click="$('.checkDelet').hide()") 取消
+    

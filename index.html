@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Vue.js-shopping list</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.8.1/css/all.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="mylist_container" id="app">
+  <div class="title">shopping list</div>
+  <div class="menu">
+    <div class="name"><span>名稱</span>
+      <input type="text" v-model="todoName"/>
+    </div>
+    <div class="num"><span>數量</span>
+      <input type="text" v-model="todoNum"/>
+    </div>
+    <div class="price"><span>價錢</span>
+      <input type="text" v-model="todoPrice"/>
+    </div>
+    <div class="addbtn">
+      <button @click="add">新增</button>
+    </div>
+  </div>
+  <div class="list_body">
+    <div class="top">
+      <div :class="{'red':visibility =='all'}" @click="visibility = 'all'">全部<span>{{lists.length}}</span></div>
+      <div :class="{'red':visibility =='active'}" @click="visibility = 'active'">進行中<span>{{activenum}}</span></div>
+      <div :class="{'red':visibility =='completed'}" @click="visibility = 'completed'">完成<span>{{completednum}}</span></div>
+    </div>
+    <div class="bottom">
+      <div class="nav">
+        <div class="name">名稱</div>
+        <div class="num" @click="istype ='num' ;isReverse=!isReverse">數量<span v-if="istype =='num'">
+            <div class="fas fa-sort-up" :class="{'reverse':isReverse}"></div></span></div>
+        <div class="price" @click="istype ='price' ;isReverse=!isReverse">價錢<span v-if="istype =='price'">
+            <div class="fas fa-sort-up" :class="{'reverse':isReverse}"></div></span></div>
+        <div class="fas fa-trash-alt"></div>
+      </div>
+      <div class="text">
+        <ul>
+          <li v-for="(item,id) in filterList">
+            <label :for="item.id" :class="{'completed':item.completed}">
+              <input class="checkbox" type="checkbox" :id="item.id" v-model="item.completed"/>
+              <div class="name" @dblclick="edit(item)"><span v-if="item.id != cacheTodo.id">{{item.name}}</span>
+                <input type="text" v-model="cacheName" @keyup.enter="canceEnter(item)" @keyup.esc="cancelEdit" v-if="item.id == cacheTodo.id"/>
+              </div>
+              <div class="num" @dblclick="edit(item)"><span v-if="item.id != cacheTodo.id"> {{item.num}}</span>
+                <input type="text" v-model="cacheNum" @keyup.enter="canceEnter(item)" @keyup.esc="cancelEdit" v-if="item.id == cacheTodo.id"/>
+              </div>
+              <div class="price" @dblclick="edit(item)"><span v-if="item.id != cacheTodo.id"> {{item.price}}</span>
+                <input type="text" v-model="cachePrice" @keyup.enter="canceEnter(item)" @keyup.esc="cancelEdit" v-if="item.id == cacheTodo.id"/>
+              </div>
+              <div class="fas fa-trash-alt" @click="remove(item)"></div>
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div class="announcement">
+        <div>快快來新增清單吧*v*</div>
+      </div>
+      <div class="total">
+        <div class="name">總共</div>
+        <div class="num">{{numadd}}個</div>
+        <div class="price">{{priceadd}}元</div>
+        <div class="clear"></div>
+      </div>
+      <div class="deleteAll" @click="$('.checkDelet').show()">清除所有清單</div>
+    </div>
+  </div>
+  <div class="checkDelet">
+    <div class="delete_text"><span>確認清除所有清單嗎?</span></div>
+    <div class="deletebtn">
+      <button class="yes" @click="deleteAll">確認</button>
+      <button class="no" @click="$('.checkDelet').hide()">取消</button>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,293 @@
+@charset "UTF-8";
+* {
+  font-family: "Roboto", sans-serif, 微軟正黑體;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mylist_container#app {
+  max-width: 800px;
+  background-color: #FFFFFF;
+  box-shadow: 1px 2px 5px 0px rgba(238, 238, 238, 0.5);
+  position: relative;
+  border-radius: 5px;
+}
+.mylist_container#app .title {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  background-color: #FF4384;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+  border-radius: 5px 5px 0px 0px;
+}
+.mylist_container#app .menu {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 20px 10px;
+}
+.mylist_container#app .menu .name {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mylist_container#app .menu .name span {
+  margin-right: 5px;
+}
+.mylist_container#app .menu .name input {
+  width: 80%;
+  height: 25px;
+  padding-left: 5px;
+}
+.mylist_container#app .menu .num, .mylist_container#app .menu .price {
+  flex: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mylist_container#app .menu .num span, .mylist_container#app .menu .price span {
+  margin-right: 5px;
+}
+.mylist_container#app .menu .num input, .mylist_container#app .menu .price input {
+  width: 60%;
+  height: 25px;
+  padding-left: 5px;
+}
+.mylist_container#app .menu .addbtn {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mylist_container#app .menu .addbtn button {
+  width: 50px;
+  height: 30px;
+  border: none;
+  background-color: #FF4384;
+  color: #fff;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.mylist_container#app .list_body {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+.mylist_container#app .list_body .top {
+  display: flex;
+  width: 60%;
+  height: 50px;
+}
+@media screen and (max-width: 414px) {
+  .mylist_container#app .list_body .top {
+    width: 80%;
+  }
+}
+.mylist_container#app .list_body .top div {
+  width: 33.33%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eee;
+  cursor: pointer;
+}
+.mylist_container#app .list_body .top div span {
+  width: 28px;
+  height: 28px;
+  background-color: #fff;
+  border-radius: 100%;
+  margin-left: 5px;
+  color: #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mylist_container#app .list_body .top div:hover {
+  border: 1px solid #999;
+}
+.mylist_container#app .list_body .top .red {
+  background-color: #FF4384;
+  color: #fff;
+}
+.mylist_container#app .list_body .top .red span {
+  color: #555;
+}
+.mylist_container#app .list_body .bottom .nav {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  background-color: #003164;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+}
+.mylist_container#app .list_body .bottom .nav .name {
+  flex: 5;
+  margin: 10px;
+}
+.mylist_container#app .list_body .bottom .nav .price, .mylist_container#app .list_body .bottom .nav .num {
+  flex: 2;
+}
+.mylist_container#app .list_body .bottom .nav .price span, .mylist_container#app .list_body .bottom .nav .num span {
+  margin-left: 5px;
+}
+.mylist_container#app .list_body .bottom .nav .price .reverse, .mylist_container#app .list_body .bottom .nav .num .reverse {
+  transform: rotate(180deg);
+}
+.mylist_container#app .list_body .bottom .nav .fas.fa-trash-alt {
+  flex: 1;
+}
+.mylist_container#app .list_body .bottom .text {
+  width: 100%;
+  height: 100%;
+}
+.mylist_container#app .list_body .bottom .text ul {
+  margin: 0;
+  padding: 0;
+}
+.mylist_container#app .list_body .bottom .text ul li {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #eee;
+}
+.mylist_container#app .list_body .bottom .text ul li label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mylist_container#app .list_body .bottom .text ul li label .checkbox {
+  display: none;
+}
+.mylist_container#app .list_body .bottom .text ul li label .name {
+  flex: 5;
+  margin: 10px;
+}
+.mylist_container#app .list_body .bottom .text ul li label .price, .mylist_container#app .list_body .bottom .text ul li label .num {
+  flex: 2;
+}
+.mylist_container#app .list_body .bottom .text ul li label .price input, .mylist_container#app .list_body .bottom .text ul li label .num input {
+  width: 80%;
+}
+.mylist_container#app .list_body .bottom .text ul li label .fas.fa-trash-alt {
+  flex: 1;
+  cursor: pointer;
+}
+.mylist_container#app .list_body .bottom .text ul li .completed {
+  background-color: #eee;
+  text-decoration: line-through;
+}
+.mylist_container#app .list_body .bottom .total {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  background-color: #003164;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mylist_container#app .list_body .bottom .total .name {
+  flex: 5;
+  margin: 10px;
+}
+.mylist_container#app .list_body .bottom .total .num, .mylist_container#app .list_body .bottom .total .price {
+  flex: 2;
+}
+.mylist_container#app .list_body .bottom .total .clear {
+  flex: 1;
+}
+.mylist_container#app .list_body .bottom .announcement {
+  width: 100%;
+  height: 100%;
+  margin: 50px 0px;
+  text-align: center;
+  font-size: 30px;
+  display: none;
+}
+.mylist_container#app .list_body .bottom .deleteAll {
+  width: 100%;
+  height: 100%;
+  text-align: right;
+  margin-top: 10px;
+  color: #003164;
+  cursor: pointer;
+}
+.mylist_container#app .checkDelet {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFEDF7;
+  z-index: 10;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+  display: none;
+}
+.mylist_container#app .checkDelet .delete_text {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20%;
+}
+.mylist_container#app .checkDelet .delete_text span {
+  font-size: 20px;
+  color: #555;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.mylist_container#app .checkDelet .deletebtn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+.mylist_container#app .checkDelet .deletebtn button {
+  width: 40%;
+  height: 40px;
+  border: none;
+  margin: 10px;
+  background-color: #FF4384;
+  color: #FFFFFF;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+.mylist_container#app .checkDelet .deletebtn .no {
+  background-color: #003164;
+}
